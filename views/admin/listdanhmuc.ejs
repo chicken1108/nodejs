@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Quản lý danh mục</title>
+    <link rel="stylesheet" href="../vendor/bootstrap.css">
+  		<script src="../vendor/bootstrap.js"></script>
+  		<script src="../ckeditor/ckeditor.js"></script>
+  		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <div class="alert alert-info" role="alert" align="center" >
+      <nav class="navbar ">
+        <div class="show-user">
+          <h5><span class="fa fa-user"></span> Welcome <%= user.username %></h5>
+          <a href="/logout" class="btn btn-danger btn-sm">Logout</a>
+        </div>
+        <br>
+        <div class="content">
+          <a href="../"><h1>Home</h1></a>
+          <br>
+          <a href="../admin/signupadmin" class="btn btn-success">Thêm tài khoản Admin</a>
+          <a href="../admin/danhmuc"><button type="button" class="btn btn-warning">Quản lý danh mục</button></a>
+          <a href="../admin/tin"><button type="button" class="btn btn-primary">Quản lý tin</button></a>
+          <a href="../admin/confirmaccount"><button type="button" class="btn btn-danger">Phê duyệt tài khoản</button></a>
+        </div>
+      </nav>
+    </div>
+    <div class="container">
+    	<div class="row">
+    		<div class="col-sm-4 push-sm-2"> <!-- col hiển thị danh sách -->
+    			<div class="card card-block card-primary">
+    				<h1>Danh sách danh mục</h1>
+    				<p>Hiển thị các danh mục đã có trong CSDL</p>
+    			</div>
+         <br>
+         <% data.forEach(function (danhmuc){%>
+         <div id="haha"></div>
+         <div class="card card-block card-info">
+           <div class="row">
+            <div class="col-sm-8">
+              <h5 class="cha"><%= danhmuc.ten%></h5>
+            </div>
+            <div class="col-sm-2 push-sm-2">
+             <a href="../admin/qldanhmuc/xoadanhmuc/<%= danhmuc.id%>" class="btnxoa"><i class="fas fa-trash"></i></a>
+             <a href="<%= danhmuc.id%>" class="btnsua"><i class="fas fa-edit"></i></a>
+           </div>
+         </div>
+       </div> <!-- hết col hiển thị dánh sách -->
+       <% }); %>
+     </div> <!-- row -->
+   </div> <!-- container -->
+
+ </body>
+</html>

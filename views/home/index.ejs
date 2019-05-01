@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tin Tức</title>
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/classy-nav.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/custom-icon.css">
+    <link rel="stylesheet" href="/css/style_custom.css">
+    <link rel="stylesheet" href="/css/search.css">
+</head>
+<body>
+   <% include header%>
+     <!-- ##### Editorial Post Area Start ##### -->
+    <div class="editors-pick-post-area section-padding-80-50">
+        <div class="container">
+            <div class="row">
+                <!-- Editors Pick -->
+                <div class="col-12 col-md-7 col-lg-12">
+                    <div class="section-heading">
+                        <h6>TIN MỚI</h6>
+                    </div>  
+                    <div class="row">
+                        <!-- Single Post -->
+                        <% tin_moi.forEach(function(value){ %>
+                        <div class="tinmoi">
+                          <div class="post-thumb">
+                            <a href="/chitiettin/<%= value.id %>"><img src="../<%= value.anh %>" alt=""></a>
+                          </div>
+                          <div class="tieude">
+                            <a style="text-decoration: none;" href="/chitiettin/<%= value.id %>">
+                              <%= value.tieude %>
+                            </a>
+                          </div>
+                        </div>
+                      <%}); %>
+                  </div>
+                </div>
+                <!-- World News -->
+               
+            </div>
+        </div>
+     </div>
+    <!-- ##### Footer Add Area End ##### -->
+
+    <!-- ##### Popular News Area Start ##### -->
+    <div class="popular-news-area section-padding-80-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-12">
+                    <div class="row">
+                        <!-- Single Post -->
+                        <div class="col-12 col-md-4">
+                         <div class="section-heading">
+                            <% data_danhmuc.forEach(function(data){%>
+                            <% if(danhmuc[0][0].id_danhmuc==data.id){ %> 
+                            <h6 class="text-uppercase"><%= data.ten %></h6>
+                            <%} %> 
+                            <%}); %>
+                        </div>
+                            <!-- tin nhỏ  -->
+                            <!-- tin nhỏ thứ 1 -->
+                            <% danhmuc[0].forEach(function(value){%>
+                            <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row no-gutters">
+                            <div class="col-md-5">
+                                  <a style="text-decoration: none;" href="/chitiettin/<%= value.id %>"><img height="300px;" src="../<%= value.anh %>" alt="..."></a>
+                              </div>
+                              <div class="col-md-7">
+                                <div style="padding-top: 10px; padding-left: 10px;">
+                                <a style="text-decoration: none;" href="/chitiettin/<%= value.id %>"><%- value.tieude %></a>
+                                </div>
+                             </div>
+                            </div>
+                           </div>
+                           <%}); %>
+                           <!-- hết tin nhỏ -->
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                         <div class="section-heading">
+                            <% data_danhmuc.forEach(function(data){%>
+                            <% if(danhmuc[1][0].id_danhmuc==data.id){ %> 
+                            <h6 class="text-uppercase"><%= data.ten %></h6>
+                            <%}%> 
+                            <%});%>
+                        </div>
+                            <!-- tin nhỏ  -->
+                            <!-- tin nhỏ thứ 1 -->
+                            <% danhmuc[1].forEach(function(value){%>
+                            <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row no-gutters">
+                            <div class="col-md-5">
+                                  <a href="/chitiettin/<%= value.id %>"><img height="300px;" src="../<%= value.anh %>" alt="..."></a>
+                              </div>
+                              <div class="col-md-7">
+                                <div style="padding-top: 10px; padding-left: 10px;">
+                                <a style="text-decoration: none;" href="/chitiettin/<%= value.id %>"><%- value.tieude %></a>
+                                </div>
+                             </div>
+                            </div>
+                           </div>
+                           <%}); %>
+                           <!-- hết tin nhỏ -->
+                        </div>
+
+                        <!-- Single Post -->
+                        <div class="col-16 col-md-4">
+                         <div class="section-heading">
+                            <% data_danhmuc.forEach(function(data){%>
+                            <% if(danhmuc[2][0].id_danhmuc==data.id){ %> 
+                            <h6 class="text-uppercase"><%= data.ten %></h6>
+                            <%}%> 
+                            <%});%>
+                        </div>
+                            <!-- tin nhỏ  -->
+                           <% danhmuc[2].forEach(function(value){%>
+                            <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row no-gutters">
+                            <div class="col-md-5">
+                                  <a href="/chitiettin/<%= value.id %>"><img height="300px;" src="../<%= value.anh %>" alt="..."></a>
+                              </div>
+                              <div class="col-md-7">
+                                <div style="padding-top: 10px; padding-left: 10px;">
+                                <a style="text-decoration: none;" href="/chitiettin/<%= value.id %>"><%- value.tieude %></a>
+                                </div>
+                             </div>
+                            </div>
+                           </div>
+                           <%}); %>
+                           <!-- hết tin nhỏ -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Popular News Area End ##### -->
+
+        <!-- ##### Popular News Area Start ##### -->
+    <div class="popular-news-area section-padding-80-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-12">
+                    <div class="row">
+                        <!-- Single Post -->
+                        <div class="col-12 col-md-4">
+                         <div class="section-heading">
+                            <% data_danhmuc.forEach(function(data){%>
+                            <% if(danhmuc[3][0].id_danhmuc==data.id){ %> 
+                            <h6 class="text-uppercase"><%= data.ten %></h6>
+                            <%}%> 
+                            <%});%>
+                        </div>
+                            <!-- tin nhỏ  -->
+                            <!-- tin nhỏ thứ 1 -->
+                            <% danhmuc[3].forEach(function(value){%>
+                            <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row no-gutters">
+                            <div class="col-md-5">
+                                  <a href="/chitiettin/<%= value.id %>"><img height="300px;" src="../<%= value.anh %>" alt="..."></a>
+                              </div>
+                              <div class="col-md-7">
+                                <div style="padding-top: 10px; padding-left: 10px;">
+                                <a style="text-decoration: none;" href="/chitiettin/<%= value.id %>"><%- value.tieude %></a>
+                                </div>
+                             </div>
+                            </div>
+                           </div>
+                           <%}); %>
+                           <!-- hết tin nhỏ -->
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                         <div class="section-heading">
+                            <% data_danhmuc.forEach(function(data){%>
+                            <% if(danhmuc[4][0].id_danhmuc==data.id){ %> 
+                            <h6 class="text-uppercase"><%= data.ten %></h6>
+                            <%}%> 
+                            <%});%>
+                        </div>
+                            <!-- tin nhỏ  -->
+                            <!-- tin nhỏ thứ 1 -->
+                            <% danhmuc[4].forEach(function(value){%>
+                            <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row no-gutters">
+                            <div class="col-md-5">
+                                  <a href="/chitiettin/<%= value.id %>"><img height="300px;" src="../<%= value.anh %>" alt="..."></a>
+                              </div>
+                              <div class="col-md-7">
+                                <div style="padding-top: 10px; padding-left: 10px;">
+                                <a style="text-decoration: none;" href="/chitiettin/<%= value.id %>"><%- value.tieude %></a>
+                                </div>
+                             </div>
+                            </div>
+                           </div>
+                           <%}); %>
+                           <!-- hết tin nhỏ -->
+                        </div>
+
+                        <!-- Single Post -->
+                        <div class="col-16 col-md-4">
+                         <div class="section-heading">
+                            <% data_danhmuc.forEach(function(data){%>
+                            <% if(danhmuc[5][0].id_danhmuc==data.id){ %> 
+                            <h6 class="text-uppercase"><%= data.ten %></h6>
+                            <%}%> 
+                            <%});%>
+                        </div>
+                            <!-- tin nhỏ  -->
+                           <% danhmuc[5].forEach(function(value){%>
+                            <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row no-gutters">
+                            <div class="col-md-5">
+                                  <a href="/chitiettin/<%= value.id %>"><img height="300px;" src="../<%= value.anh %>" alt="..."></a>
+                              </div>
+                              <div class="col-md-7">
+                                <div style="padding-top: 10px; padding-left: 10px;">
+                                <a style="text-decoration: none;" href="/chitiettin/<%= value.id %>"><%- value.tieude %></a>
+                                </div>
+                             </div>
+                            </div>
+                           </div>
+                           <%}); %>
+                           <!-- hết tin nhỏ -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- ##### Popular News Area Start ##### -->
+    <div class="popular-news-area section-padding-80-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-12">
+                    <div class="row">
+                        <!-- Single Post -->
+                        <div class="col-12 col-md-4">
+                         <div class="section-heading">
+                            <% data_danhmuc.forEach(function(data){%>
+                            <% if(danhmuc[6][0].id_danhmuc==data.id){ %> 
+                            <h6 class="text-uppercase"><%= data.ten %></h6>
+                            <%}%> 
+                            <%});%>
+                        </div>
+                            <!-- tin nhỏ  -->
+                            <!-- tin nhỏ thứ 1 -->
+                            <% danhmuc[6].forEach(function(value){%>
+                            <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row no-gutters">
+                            <div class="col-md-5">
+                                  <a href="/chitiettin/<%= value.id %>"><img height="300px;" src="../<%= value.anh %>" alt="..."></a>
+                              </div>
+                              <div class="col-md-7">
+                                <div style="padding-top: 10px; padding-left: 10px;">
+                                <a style="text-decoration: none;" href="/chitiettin/<%= value.id %>"><%- value.tieude %></a>
+                                </div>
+                             </div>
+                            </div>
+                           </div>
+                           <%}); %>
+                           <!-- hết tin nhỏ -->
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                         <div class="section-heading">
+                            <% data_danhmuc.forEach(function(data){%>
+                            <% if(danhmuc[7][0].id_danhmuc==data.id){ %> 
+                            <h6 class="text-uppercase"><%= data.ten %></h6>
+                            <%}%> 
+                            <%});%>
+                        </div>
+                            <!-- tin nhỏ  -->
+                            <!-- tin nhỏ thứ 1 -->
+                            <% danhmuc[7].forEach(function(value){%>
+                            <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row no-gutters">
+                            <div class="col-md-5">
+                                  <a href="/chitiettin/<%= value.id %>"><img height="300px;" src="../<%= value.anh %>" alt="..."></a>
+                              </div>
+                              <div class="col-md-7">
+                                <div style="padding-top: 10px; padding-left: 10px;">
+                                <a style="text-decoration: none;" href="/chitiettin/<%= value.id %>"><%- value.tieude %></a>
+                                </div>
+                             </div>
+                            </div>
+                           </div>
+                           <%}); %>
+                           <!-- hết tin nhỏ -->
+                        </div>
+
+                        <!-- Single Post -->
+                        <div class="col-16 col-md-4">
+                         <div class="section-heading">
+                            <% data_danhmuc.forEach(function(data){%>
+                            <% if(danhmuc[8][0].id_danhmuc==data.id){ %> 
+                            <h6 class="text-uppercase"><%= data.ten %></h6>
+                            <%}%> 
+                            <%});%>
+                        </div>
+                            <!-- tin nhỏ  -->
+                           <% danhmuc[8].forEach(function(value){%>
+                            <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row no-gutters">
+                            <div class="col-md-5">
+                                  <a href="/chitiettin/<%= value.id %>"><img height="300px;" src="../<%= value.anh %>" alt="..."></a>
+                              </div>
+                              <div class="col-md-7">
+                                <div style="padding-top: 10px; padding-left: 10px;">
+                                <a style="text-decoration: none;" href="/chitiettin/<%= value.id %>"><%- value.tieude %></a>
+                                </div>
+                             </div>
+                            </div>
+                           </div>
+                           <%}); %>
+                           <!-- hết tin nhỏ -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+       <!-- ##### Popular News Area Start ##### -->
+    <div class="popular-news-area section-padding-80-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-12">
+                    <div class="row">
+                        <!-- Single Post -->
+                        <div class="col-12 col-md-4">
+                         <div class="section-heading">
+                            <% data_danhmuc.forEach(function(data){%>
+                            <% if(danhmuc[9][0].id_danhmuc==data.id){ %> 
+                            <h6 class="text-uppercase"><%= data.ten %></h6>
+                            <%}%> 
+                            <%});%>
+                        </div>
+                            <!-- tin nhỏ  -->
+                            <!-- tin nhỏ thứ 1 -->
+                            <% danhmuc[9].forEach(function(value){%>
+                            <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row no-gutters">
+                            <div class="col-md-5">
+                                  <a href="/chitiettin/<%= value.id %>"><img height="300px;" src="../<%= value.anh %>" alt="..."></a>
+                              </div>
+                              <div class="col-md-7">
+                                <div style="padding-top: 10px; padding-left: 10px;">
+                                <a style="text-decoration: none;" href="/chitiettin/<%= value.id %>"><%- value.tieude %></a>
+                                </div>
+                             </div>
+                            </div>
+                           </div>
+                           <%}); %>
+                           <!-- hết tin nhỏ -->
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                         <div class="section-heading">
+                            <% data_danhmuc.forEach(function(data){%>
+                            <% if(danhmuc[10][0].id_danhmuc==data.id){ %> 
+                            <h6 class="text-uppercase"><%= data.ten %></h6>
+                            <%}%> 
+                            <%});%>
+                        </div>
+                            <!-- tin nhỏ  -->
+                            <!-- tin nhỏ thứ 1 -->
+                            <% danhmuc[10].forEach(function(value){%>
+                            <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row no-gutters">
+                            <div class="col-md-5">
+                                  <a href="/chitiettin/<%= value.id %>"><img height="300px;" src="../<%= value.anh %>" alt="..."></a>
+                              </div>
+                              <div class="col-md-7">
+                                <div style="padding-top: 10px; padding-left: 10px;">
+                                <a style="text-decoration: none;" href="/chitiettin/<%= value.id %>"><%- value.tieude %></a>
+                                </div>
+                             </div>
+                            </div>
+                           </div>
+                           <%}); %>
+                           <!-- hết tin nhỏ -->
+                        </div>
+
+                        <!-- Single Post -->
+                        <div class="col-16 col-md-4">
+                         <div class="section-heading">
+                            <% data_danhmuc.forEach(function(data){%>
+                            <% if(danhmuc[11][0].id_danhmuc==data.id){ %> 
+                            <h6 class="text-uppercase"><%= data.ten %></h6>
+                            <%}%> 
+                            <%});%>
+                        </div>
+                            <!-- tin nhỏ  -->
+                           <% danhmuc[11].forEach(function(value){%>
+                            <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row no-gutters">
+                            <div class="col-md-5">
+                                  <a href="/chitiettin/<%= value.id %>"><img height="300px;" src="../<%= value.anh %>" alt="..."></a>
+                              </div>
+                              <div class="col-md-7">
+                                <div style="padding-top: 10px; padding-left: 10px;">
+                                <a style="text-decoration: none;" href="/chitiettin/<%= value.id %>"><%- value.tieude %></a>
+                                </div>
+                             </div>
+                            </div>
+                           </div>
+                           <%}); %>
+                           <!-- hết tin nhỏ -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ##### All Javascript Files ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+</body>
+<% include footer.ejs%>
+</html>

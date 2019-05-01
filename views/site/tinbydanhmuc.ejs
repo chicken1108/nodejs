@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+    	<% ten_danhmuc.forEach(function(data){%>
+		<%= data.ten %>
+		<% }); %>	
+	</title>
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Title -->
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/classy-nav.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/custom-icon.css">
+    <link rel="stylesheet" href="/css/style_custom.css">
+    <link rel="stylesheet" href="/css/search.css">
+</head>
+<% include ../home/header%>
+<body>
+    <div class="tieudenews">
+		<div class="container">
+			<div class="row">
+				<div class="danhmuc">
+					<div style="border-bottom: 3px solid red; margin-top: 10px;">
+						<% ten_danhmuc.forEach(function(data){%>
+						<h3><%= data.ten %></h3>
+						<% }); %>
+					</div>
+				</div>
+			</div>
+		</div>
+ 	</div>   <!-- HET TIEDE DE NEWS -->
+ 	<br>
+ 	<div class="container">
+ 		<div class="row">
+ 			<% data_tin_by_danhmuc.forEach(function(datadm){%>
+ 			<div class="box box-hidden">
+ 				<div>
+ 					<div>
+ 						<a href="/chitiettin/<%= datadm.id %>">
+ 							<img class="img-fluid" src="../<%= datadm.anh %>" alt="">
+ 						</a>
+ 					</div>
+ 					<div class="tieude">
+ 						<a style="text-decoration: none;" href="/chitiettin/<%= datadm.id %>" class="tieudetin1 fontoswarld"><%= datadm.tieude %></a>
+ 					</div>
+ 				</div>
+ 			</div>
+ 			<% }); %>
+ 		</div>
+ 		<div class="wrap-button">
+ 			<button id="loadmore" class="btn-loadmore">Load more</button>
+ 		</div>
+ 	</div>
+ </div>
+  </body>
+<script>
+ $(function(){
+ 	$('.box-hidden').slice(0, 6).show();
+ 	$('#loadmore').on('click', function(event) {
+ 		event.preventDefault();
+ 		$('.box-hidden:hidden').slice(0,6).slideDown();
+ 		if($('.box-hidden:hidden').length==0){
+ 			$('#loadmore').fadeOut('slow');
+ 		}
+ 		$('html,body').animate({
+ 			scrollTop: $(this).offset().top
+ 		},1500);
+ 	});
+ });
+</script>
+<% include ../home/footer%>
+</html>

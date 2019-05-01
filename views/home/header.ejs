@@ -1,0 +1,90 @@
+
+    <header class="header-area">
+        <div class="top-header-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="top-header-content d-flex align-items-center justify-content-between">
+                            <!-- Logo -->
+                            <div class="logo" >
+                                <a href="/"><img src="/images/logo.png" alt="" width="170px;"></a>
+                                <small>ĂN HẠI TEAM</small>
+                            </div>
+                            <!-- Login Search Area -->
+                            <div class="login-search-area d-flex align-items-center">
+                                <!-- Login -->
+                                <% if(user == null){%>
+                                <div>
+                                    <a href="/login" style="text-decoration: none; color: white">Đăng nhập</a>
+                                    |&nbsp
+                                    <a href="/signup"  style="text-decoration: none; color: white">Đăng kí</a>
+                                </div>
+                                <%} else{%>
+                                <ul>
+                                    <li class="account">
+                                       <a class="info"><i class="fas fa-user">&nbsp<%= user.username%></i></a>
+                                       <ul class="list">
+                                        <li><a href="/user/info">Tài khoản của tôi</a></li>
+                                        <li><a href="/user/changepassword">Đổi mật khẩu</a></li>
+                                        <li><a href="/logout" class="dangxuat">Đăng xuất</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                                <%} %>
+                                <!-- Search Form -->
+                                <form action="/search" method="post" enctype="application/x-www-form-urlencoded">
+                                    <div class="search-box">
+                                        <input type="text" placeholder="Nhập thông tin tìm kiếm ..." class="search-txt" name="key">
+                                        <button class="search-btn" type="submit">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar Area -->
+        <div class="newspaper-main-menu" id="stickyMenu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="newspaperNav">
+
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+                        </div>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- close btn -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li class="active"><a href="/"><i class="fas fa-home"></i></a></li>
+                                    <% data_danhmuc.forEach(function(datadanhmuc){%>
+                                    <li><a href="/tinbydanhmuc/<%= datadanhmuc.id %>"><%= datadanhmuc.ten %></a>
+                                    <%}); %>
+                                </ul>
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->

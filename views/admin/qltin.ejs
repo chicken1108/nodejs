@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Quản lí tin tức</title>
+	<link rel="stylesheet" href="../vendor/bootstrap.css">
+		<script src="../vendor/bootstrap.js"></script>
+		<script src="../ckeditor/ckeditor.js"></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+<body style="background-image: url(images/background_2.jpg); background-size: cover;">
+<div class="container-fluid">
+<div class="col-sm-12" >
+  <div class="alert alert-info" role="alert" align="center" >
+    <nav class="navbar ">
+        <a href="../"><h1>Home</h1></a>
+          <a href="../admin/danhmuc"><button type="button" class="btn btn-success">QL Danh mục</button></a>
+          <a href="../admin"><button type="button" class="btn btn-warning">Dashboard</button></a>
+          <a href="../admin/confirmaccount"><button type="button" class="btn btn-primary">Phê duyệt tài khoản</button></a>
+          <a href="../admin/signupadmin"><button type="button" class="btn btn-danger">Thêm tài khoản admin</button></a>
+    </nav>
+  </div>
+</div>
+	<div class="row">
+		<div class="col-sm-6"><!-- col-sm-6-trai -->
+			<div class="jumbotron">
+				<h1 class="display-3">Thêm mới tin</h1>
+				<p class="lead">Cho phép thêm mới tin vào CSDL</p>
+				<hr class="m-y-md">
+			</div>
+			<div>
+				<form action="../admin/tin/themtin" method="POST" enctype="multipart/form-data">
+					<fieldset class="form-group">
+						<label for="exampleInputEmail1">Tiêu đề</label>
+						<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập tiêu đề" name="tieude">
+					</fieldset>
+					<fieldset class="form-group">
+						<label for="exampleInputPassword1">Trích dẫn</label>
+						<input type="textarea" rows="5" class="form-control" placeholder="Nhập trích dẫn" name="trichdan">
+					</fieldset>
+					<fieldset class="form-group">
+						<label for="exampleInputPassword1">Nội dung</label>
+						<textarea name="noidung" id="noidung1" cols="30" rows="10"></textarea>
+					</fieldset>
+					<fieldset class="form-group">
+						<label for="exampleInputEmail1">Tác giả</label>
+						<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập tác giả" name="tacgia">
+					</fieldset>
+						<fieldset class="form-group">
+						<label for="">Thêm Ảnh</label>
+						<input class="form-control" type="file" name="anh">
+					</fieldset>
+					<fieldset class="form-group">
+						<label for="exampleSelect1">Danh mục</label>
+
+						<select class="form-control" id="eexampleSelect11" name="danhmuc_id">
+							<% data_danhmuc.forEach(function (data_dm){%>
+							<option value="<%= data_dm.id %>"> <%= data_dm.ten %></option>
+							<% }); %>
+						</select>
+					</fieldset>
+					<fieldset class="form-group">
+						<label for="exampleSelect1">Ngày đăng</label>
+		                <input class="form-control" type="datetime-local" name="ngaydang" value="">
+						</select>
+					</fieldset>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+		</div><!-- end-col-sm-6 -->
+
+		<div class="col-sm-6"><!-- col-sm-6-phai -->
+			<div class="jumbotron">
+				<h1 class="display-3">Danh sách tin</h1>
+				<p class="lead">Danh sách các tin trong CSDL</p>
+				<hr class="m-y-md">
+			</div>
+			    <% data_tin.forEach(function (value) {%>
+				<div class="card mb-3 card-outline-success" style="max-width: 640px;">
+				  <div class="row no-gutters">
+				    <div class="col-md-4">
+				      <img src="../<%= value.anh %>" class="card-img img-fluid" width="200px" height="300px;">
+				    </div>
+				    <div class="col-md-8">
+				      <div class="card-body">
+				        <h5 class="card-title"><%= value.tieude %></h5>
+				        <p class="card-text"><%= value.trichdan %></p>
+				        <h5 class="card-title"><%= value.tacgia %></h5>
+				        <p class="card-text"><%= value.ngaydang %></p>
+				        <div style="margin-left: 160px;">
+					        <a onclick="return confirm('Are you sure ?')" href="../admin/tin/xoatin/<%= value.id %>" style="margin-right: 15px; font-size: 25px; color: black";><i class="fas fa-trash-alt"></i></a>
+					        <a href="../admin/tin/suatin/<%= value.id %>" style="margin-right: 15px; font-size: 25px; color: red;"><i class="fas fa-edit"></i></a>
+					        <a href="" style="font-size: 25px;"><i class="fas fa-info-circle"></i></a>
+				        </div>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				<%}); %>
+		</div><!-- end-col-sm-6 -->
+	</div><!-- end-row -->
+</div><!-- end-container -->
+<script>
+	CKEDITOR.replace( 'noidung', {
+    filebrowserBrowseUrl: '/ckeditor/ckfinder/ckfinder.html',
+    filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+    filebrowserWindowWidth: '1000',
+    filebrowserWindowHeight: '700'
+});
+</script>
+</html>

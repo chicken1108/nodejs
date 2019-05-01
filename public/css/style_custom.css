@@ -1,0 +1,173 @@
+
+.danhmuc{
+ margin-left: 10px;
+}
+.related h4{
+	margin-top: 30px;
+	width: 230px;
+	border-bottom: 3px solid #e67e22;
+}
+.box-related{
+	width: 170px;
+	height: 250px;
+	margin: 10px;
+	border: 1px solid #b2bec3;
+	padding-bottom: 10px;
+}
+.put-it-here{
+	border-top: 1px solid #1abc9c;
+	border-bottom: 1px solid #1abc9c;
+}
+.commented{
+	padding-left: 20px;
+	padding-top: 20px;
+}
+.commented p{
+	font-family: sans-serif;
+	color: black;
+}
+.commented h6{
+	color: #1e3799;
+}
+.list-comments{
+	margin-bottom: 30px;
+}
+.no-result{
+	text-align: center;
+	height: 200px;
+}
+.no-result h5{
+	padding-top: 90px;
+}
+
+.box{
+	margin: 10px;
+	width: 170px;
+	height: 250px;
+	border: 1px solid #b2bec3;
+	float: left;
+}
+.wrap-button{
+	margin-left: 450px;
+	padding: 20px;
+}
+.btn-loadmore{
+	background: white;
+	font-family: sans-serif;
+	width: 150px;
+	padding: 5px;
+	border: 1px solid #fa983a;
+	border-radius: 5px;
+	color: #ff793f;
+	font-weight: bold;
+}
+.btn-loadmore:hover{
+	background: #e67e22;
+	color: white;
+	font-weight: bold;
+	border: 1px solid #eb2f06;
+}
+.box-hidden{
+	display: none;
+}
+.tinmoi{
+	padding: auto;
+	margin: auto;
+	width: 170px;
+	height: 250px;
+	margin: 10px;
+	border: 1px solid #b2bec3;
+	padding-bottom: 10px;
+}
+.tinmoi .post-thumb{
+	padding-bottom: 5px;
+}
+.tieude {
+ padding: 5px;
+}
+.search-result{
+	padding: auto;
+	margin: auto;
+	width: 170px;
+	height: 250px;
+	margin: 10px;
+	border: 1px solid #b2bec3;
+	padding-bottom: 10px;
+}
+.result{
+	padding: 15px;
+}
+.login-signup{
+	font-size: 50px;
+}
+
+ul {
+  display: inline;
+}
+ul .account .list{
+  position: absolute;
+	background: orange;
+	display: none;
+	height: 100px;
+	width: 160px;
+	right: 390px;
+	top: -30px;
+	border: 1px solid black;
+	border-radius: 10px;
+}
+ul .account .list li { 
+  list-style: none;
+  display: inline; 
+}
+ul .account .info{
+	color: white;
+	cursor: pointer;
+}
+ul .account .list li a {
+	color: black;
+	padding-left: 23px;
+	padding-bottom: 6px;
+	margin-top: 5px;
+	display:block;
+	text-decoration: none;
+	font-family: sans-serif;
+	font-weight: 3px;
+} 
+ul .account .list li .dangxuat{
+	color: #26de81;
+}
+ul .account:hover .list {display: block; background: white;}
+ul .account .list li a:hover {
+	color: #2bcbba;
+}
+.info-user{
+	margin-top: 30px;
+	margin-bottom: 30px;
+	width: 400px;
+	height: 350px;
+	margin-left: 370px;
+	border: 1px solid red;
+	border-radius: 10px;
+}
+.info-user h5{
+	text-align: center;
+	padding: 10px;
+}
+.info-user div{
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 10px;
+}
+.info-user .btn{
+	text-align: center;
+	margin-left: 80px;
+}
+.info-user .btn a{
+ text-decoration: none;
+}
+.info-user .username{
+ margin-left: 10px;
+}
+.info-user .gioitinh{
+	margin-left: 10px;
+}

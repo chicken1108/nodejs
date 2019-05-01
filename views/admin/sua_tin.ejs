@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sửa tin tức</title>
+	<link rel="stylesheet" href="../../../vendor/bootstrap.css">
+	<script src="../../../vendor/bootstrap.js"></script>
+	<script src="../../../ckeditor/ckeditor.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+<div class="col-sm-12" >
+  <div class="alert alert-info" role="alert" align="center" >
+    <nav class="navbar ">
+        <a href="../"><h1>Home</h1></a> 
+          <a href="../../../admin/tin"><button type="button" class="btn btn-primary">QL Tin</button></a>
+          <a href="../../../admin/danhmuc"><button type="button" class="btn btn-primary">QL danhmục</button></a>
+          <a href="../../../admin"><button type="button" class="btn btn-primary">Dashboard</button></a>
+    </nav>
+  </div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8 push-sm-2">
+			<div class="alert alert-danger" align="center"><h1>Sửa tin</h1></div>
+               <form action="../../../admin/tin/suatin" method="post" enctype="multipart/form-data">
+               	<% data_tin.forEach(function(value){%>
+				   <fieldset>
+				   	<input type="hidden" name="id" value="<%= value.id %>">
+				   </fieldset>
+			        <fieldset class="form-group">
+						<label for="exampleInputEmail1">Tiêu đề</label>
+						<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập tiêu đề" name="tieude" value="<%= value.tieude %>">
+					</fieldset>
+					<fieldset class="form-group">
+						<label for="exampleInputPassword1">Trích dẫn</label>
+						<input type="textarea" rows="5" class="form-control" placeholder="Nhập trích dẫn" name="trichdan" value="<%= value.trichdan %>">
+					</fieldset>
+					<fieldset class="form-group">
+						<label for="exampleInputPassword1">Nội dung</label>
+						<textarea name="noidung" id="noidung" cols="30" rows="10"><%= value.noidung %></textarea>
+					</fieldset>
+					<fieldset class="form-group">
+						<label for="exampleInputEmail1">Tác giả</label>
+						<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập tác giả" name="tacgia" value="<%= value.tacgia %>">
+					</fieldset>
+					<fieldset class="form-group col-sm-6">
+						<label for="exampleInputEmail1">Ảnh</label>
+						<img class="form-control img-thumbnail" src="../../../<%= value.anh %>">
+						<input type="hidden" name="anhcu" value="<%= value.anh %>">
+					</fieldset>
+					<fieldset class="form-group">
+						<label for="">Thêm Ảnh</label>
+						<input class="form-control" type="file" name="anh">
+					</fieldset>
+					<fieldset class="form-group">
+						<label for="exampleSelect1">Danh mục</label>
+						<select class="form-control" id="eexampleSelect11" name="id_danhmuc">
+							<% data_danhmuc.forEach(function(data_dm){%>
+
+                              <% if(value.id_danhmuc==data_dm.id){ %>                       
+                              <option selected="" value="<%= data_dm.id %>"><%= data_dm.ten %></option>
+                              <%}else{ %>
+                              <option value="<%= data_dm.id %>"><%= data_dm.ten %></option>
+                              <%}%> 
+                            <% }) %>
+						</select>
+					</fieldset>
+					<button type="submit" class="btn btn-primary">Sửa</button>
+               <% }) %>
+			</form>
+		</div>
+	</div>
+</div>	
+</body>
+<script>
+		CKEDITOR.replace( 'noidung', {
+    filebrowserBrowseUrl: '/artica/ckfinder/ckfinder.html',
+    filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+    filebrowserWindowWidth: '1000',
+    filebrowserWindowHeight: '700'
+});
+
+</script>
+</html>

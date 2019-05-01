@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <% data_tin_by_id.forEach(function(value){%>
+    <title><%= value.tieude %></title>
+    <% });%>
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Title -->
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/classy-nav.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../css/style_custom.css">
+     <link rel="stylesheet" href="../css/search.css">
+    <script src="../vendor/bootstrap.js"></script>
+    <script src="../ckeditor/ckeditor.js"></script>
+</head>
+<% include ../home/header%>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8" style="margin-left: 200px;">
+				<% data_tin_by_id.forEach(function(value){%>
+				<div class="mottinchuan mb-3  wow  fadeInUp fontroboto">
+					<br>
+					<input class="id_tin" type="hidden" name="id" value="<%= value.id %>" >
+					<h3><%- value.tieude %></h3>
+					<p><%= value.ngaydang %></p>
+					<p>Tác giả: <%- value.tacgia %></p>
+					<h6><%- value.trichdan %></h6>
+					<p style="text-align:center;"><%- value.noidung %></p> 
+				</div>
+				<% });%>
+				<div class="list-comments">
+					<h4>List comments</h4>
+					<div class="put-it-here">
+						<% data_comment.forEach(function(comment){%>
+						<div class="commented">
+							<h6><%= comment.name %></h6>
+							<p><%= comment.content %></p>
+						</div>
+						<hr>
+						<%}); %>
+					</div>
+				</div>
+				<% if(user==null){%>
+                 <div>
+                 	<p>Bạn chưa đăng nhập, vui lòng <a href="/login">đăng nhập</a> để bình luận!</p>
+                 </div>
+				<%} else{%>
+				<div class="comment col-sm-12">
+					<div class="form-comment">
+						<div class="col-sm-10">
+							<textarea name="content" id="content" rows="10" placeholder="Nhập nội dung bình luận" class="content form-control"></textarea>
+						</div>
+					</div>
+					<div class="col-sm-3" style="margin-top: 10px;">
+						<input type="hidden" id="name" value="<%=user.username %>">
+						<button id="btncomment" class="btn btn-danger">
+							Bình luận
+						</button>
+					</div>
+				</div>
+				<%}%>
+				<div class="related">
+					<h4>CÙNG CHUYÊN MỤC</h4>
+					<div class="row">
+						<% data_tin_lien_quan.forEach(function(value){ %>
+						<div class="box-related">
+							<div>
+								<a href="../../chitiettin/<%= value.id%>"><img src="../<%= value.anh %>"></a>
+							</div>
+							<div class="tieude">
+								<a style="text-decoration: none;" href="../../chitiettin/<%= value.id%>"><%= value.tieude %></a>
+							</div>
+						</div>
+						<%}); %>
+					</div>    
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+ $('body').on('click', '#btncomment', function(event) {
+ 	event.preventDefault();
+ 	var name = $('#name').val();
+ 	var content = $('#content').val();
+ 	var id = $('.id_tin').val();
+    $.ajax({
+    	url:"/comment",
+    	type: 'POST',
+    	dataType: 'json',
+    	data: {
+    		name:name,
+    		content:content,
+    		id:id
+    	},
+    })
+    .done(function() {
+    	console.log("success");
+    })
+    .fail(function() {
+    	console.log("error");
+    })
+    .always(function() {
+    	console.log("complete");     	          
+    });
+    noidung = '';
+ 	noidung += '<div class="commented">';
+ 	noidung += '<h6>'+name+'</h6>';
+ 	noidung += '<p>'+content+'</p>';
+ 	noidung += '</div>';
+ 	$(".put-it-here").append(noidung);
+ 	$('#content').val('');
+
+ });
+</script>
+<% include ../home/footer%>
+</html>

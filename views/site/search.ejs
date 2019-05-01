@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tin Tức</title>
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Title -->
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/classy-nav.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/custom-icon.css">
+    <link rel="stylesheet" href="/css/style_custom.css">
+    <link rel="stylesheet" href="/css/search.css">
+    <script src="../vendor/bootstrap.js"></script>
+    <script src="../ckeditor/ckeditor.js"></script>
+</head>
+<% include ../home/header%>
+<body>
+<% if(data_search!=''){%>
+<div class="container">
+    <div class="result">
+            <h5>Có <%= num_result %> kết quả phù hợp với từ khóa tìm kiếm: <%=key %></h5>
+        </div>
+    <div class="row">
+        <% data_search.forEach(function(value){%>
+        <div class="tinmoi box box-hidden">
+          <div class="post-thumb">
+            <a href="/chitiettin/<%= value.id %>"><img src="../<%= value.anh %>" alt=""></a>
+        </div>
+        <div class="tieude">
+            <a href="/chitiettin/<%= value.id %>">
+              <%= value.tieude %>
+          </a>
+        </div>
+       </div>
+        <% }); %>
+    </div>
+    <div class="wrap-button">
+        <button id="loadmore" class="btn-loadmore">Load more</button>
+    </div>
+</div>
+<%} else{ %>
+<div class="no-result">
+    <h5>Không có kết quả nào phù hợp với từ khóa: <%= key %></h5>
+</div>
+<%} %>
+</body>
+<script>
+ $(function(){
+    $('.box-hidden').slice(0, 6).show();
+    $('#loadmore').on('click', function(event) {
+        event.preventDefault();
+        $('.box-hidden:hidden').slice(0,6).slideDown();
+        if($('.box-hidden:hidden').length<=6){
+            $('#loadmore').fadeOut('slow');
+        }
+        $('html,body').animate({
+            scrollTop: $(this).offset().top
+        },1000);
+    });
+ });
+</script>
+<% include ../home/footer%>
+</html>

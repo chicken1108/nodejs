@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin tài khoản</title>
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Title -->
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/classy-nav.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/custom-icon.css">
+    <link rel="stylesheet" href="/css/style_custom.css">
+    <link rel="stylesheet" href="/css/search.css">
+</head>
+<body>
+<% include ../home/header.ejs %>
+<div class="container">
+    <div class="row">
+        <div class="info-user">
+            <% info_user.forEach(function(value){%>
+         <form action="../user/info" method="post">
+            <h5>Thông tin tài khoản</h5>
+            <div class="username">
+                <span>Tên tài khoản: <b><%= value.username%></b></span>
+            </div>
+             <div class="input-group">
+               <div class="input-group-prepend">
+                 <span class="input-group-text">Họ tên</span>
+               </div>
+              <input type="text" aria-label="First name" class="form-control" name="hoten" value="<%= value.hoten%>">                
+             </div>
+             <div class="input-group">
+               <div class="input-group-prepend">
+                <span class="input-group-text">Email</span>
+               </div>
+               <input type="text" aria-label="First name" class="form-control" name="email" value="<%= value.email%>">              
+             </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+               <span class="input-group-text">SĐT</span>
+              </div>
+               <input type="text" aria-label="First name" class="form-control" name="sdt" value="<%= value.sdt%>">                
+            </div>
+            <div class="gioitinh">
+                <span>Giới tính</span>
+                <% if(value.gioitinh==0){%>
+                 &nbsp &nbsp &nbsp
+                <input type="radio" name="gioitinh" value="0" checked=""> Nam
+                &nbsp &nbsp &nbsp
+                <input type="radio" name="gioitinh" value="1"> Nữ
+                <%} else{%>
+                &nbsp &nbsp &nbsp
+                <input type="radio" name="gioitinh" value="0"> Nam
+                &nbsp &nbsp &nbsp
+                <input type="radio" name="gioitinh" value="1" checked=""> Nữ
+                <%}%>
+            </div>
+            <div class="btn">
+                <button type="submit" class="btn btn-primary">Lưu</button>
+            </div>
+        </form> 
+        <%}); %>
+       </div>
+    </div>
+</div>
+</body>
+<% include ../home/footer.ejs %>
+</html>
